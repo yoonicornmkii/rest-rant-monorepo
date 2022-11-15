@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const db = require("../models")
 const bcrypt = require('bcrypt')
-const jwt = require('jwt')
+const jwt = require('json-web-token')
 
 const { User } = db
 
@@ -25,7 +25,7 @@ router.get('/profile', async (req, res) => {
     try {
         let user = await User.findOne({
             where: {
-                userId:_
+                userId: id
             }
         })
         res.json(user)
